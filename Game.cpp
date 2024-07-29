@@ -8,12 +8,16 @@ void Game::run()
     window.setFramerateLimit(60);
     
 
+    sf::Image icon;
+    icon.loadFromFile("res/icon.png");
 
-    std::unique_ptr<Tile> ptr = std::make_unique<Tile>("res/sava.png", 800,300);
+
+    // Устанавливаем иконку
+    window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
+
     
-
-
-    
+    Map mp;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -23,9 +27,7 @@ void Game::run()
         }
 
         window.clear();
-        ptr->draw(window);
-       
- 
+        mp.draw(window);
         window.display();
     }
 }
