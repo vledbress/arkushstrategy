@@ -26,6 +26,11 @@ void Tile::setPosition(float x, float y)
 	_sprite.setPosition({ x,y });
 }
 
+void Tile::setPosition(sf::Vector2f v)
+{
+	_sprite.setPosition(v);
+}
+
 sf::Vector2f Tile::getPosition()
 {
 	return _sprite.getPosition();

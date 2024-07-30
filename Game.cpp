@@ -5,16 +5,21 @@ void Game::run()
     sf::RenderWindow window(sf::VideoMode(Consts::SCREEN_WIDTH, Consts::SCREEN_HEIGHT), "pa");
     
    
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(Consts::fps);
     
 
     sf::Image icon;
     icon.loadFromFile("res/icon.png");
 
 
-    // Устанавливаем иконку
+
+    SimpleTileFactory stf;
+    std::shared_ptr<Tile> ui = stf.createTile("res/bisnes.png", 100, 100, 0, 0);
+    
+    
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
+    ShiftAnimation sa(ui, { 800,620 }, 60<<1);
 
     
     Map mp;
@@ -28,6 +33,8 @@ void Game::run()
 
         window.clear();
         mp.draw(window);
+        sa.update();
+        ui->draw(window);
         window.display();
     }
 }

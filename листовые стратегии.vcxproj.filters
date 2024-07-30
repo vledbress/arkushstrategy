@@ -25,6 +25,9 @@
     <ClCompile Include="GroundTile.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -33,5 +36,6 @@
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileFactory.h" />
     <ClInclude Include="GroundTile.h" />
+    <ClInclude Include="Animation.h" />
   </ItemGroup>
 </Project>
