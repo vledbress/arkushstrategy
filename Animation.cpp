@@ -33,4 +33,36 @@ void ShiftAnimation::update()
     }
 
     _obj->setPosition(newPosition);
+
+    if (newPosition == _targetPosition) {
+        _isFinished = true;
+    }
+}
+
+bool ShiftAnimation::isFinished() 
+{
+    return _isFinished;
+}
+
+void AnimationManager::addAnimation(std::shared_ptr<AnimationI> an)
+{
+    if (an) {
+        _animations.push_back(an);
+    }
+}
+
+void AnimationManager::update()
+{
+    if (_animations.size() > 0) {
+        for (const auto it : _animations) {
+            it->update();
+        }
+
+        _animations.erase(
+            std::remove_if(_animations.begin(), _animations.end(),
+                [](const std::shared_ptr<AnimationI>& anim) { return anim->isFinished(); }),
+            _animations.end()
+        );
+    }
+    //std::cout << _animations.size() << std::endl;
 }

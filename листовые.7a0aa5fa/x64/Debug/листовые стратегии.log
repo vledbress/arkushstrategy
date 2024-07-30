@@ -1,5 +1,4 @@
-﻿  Animation.cpp
-  Game.cpp
-  main.cpp
-  Создание кода...
+﻿  Game.cpp
+D:\c++++\листовые стратегии\Game.cpp(39,88): warning C4305: аргумент: усечение из "double" в "float"
+D:\c++++\листовые стратегии\Game.cpp(42,82): warning C4305: аргумент: усечение из "double" в "float"
   листовые стратегии.vcxproj -> D:\c++++\листовые стратегии\x64\Debug\листовые стратегии.exe
