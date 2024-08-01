@@ -26,6 +26,25 @@ public:
     bool isFinished();
 };
 
+class PulsatingAnimation : public AnimationI {
+private:
+    std::shared_ptr<Tile> _obj;
+    sf::Vector2f _targetScale;
+    sf::Vector2f _deltaOffset;
+    float _percent;
+    sf::Vector2f _deltaScale;
+    bool _isFinished = false;
+    int _totalSteps;
+    int _currentSteps;
+public:
+    PulsatingAnimation(std::shared_ptr<Tile> obj, float percent, float time);
+
+    void update();
+
+    bool isFinished();
+
+};
+
 
 class AnimationManager {
 private:

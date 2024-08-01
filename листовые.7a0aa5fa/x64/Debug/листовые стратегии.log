@@ -1,4 +1,10 @@
-﻿  Game.cpp
-D:\c++++\листовые стратегии\Game.cpp(39,88): warning C4305: аргумент: усечение из "double" в "float"
-D:\c++++\листовые стратегии\Game.cpp(42,82): warning C4305: аргумент: усечение из "double" в "float"
+﻿  Animation.cpp
+D:\c++++\листовые стратегии\Animation.cpp(88,24): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+  AnimationFactory.cpp
+  Game.cpp
+D:\c++++\листовые стратегии\Game.cpp(40,88): warning C4305: аргумент: усечение из "double" в "float"
+D:\c++++\листовые стратегии\Game.cpp(43,82): warning C4305: аргумент: усечение из "double" в "float"
+D:\c++++\листовые стратегии\Game.cpp(48,68): warning C4305: аргумент: усечение из "double" в "float"
+  main.cpp
+  Создание кода...
   листовые стратегии.vcxproj -> D:\c++++\листовые стратегии\x64\Debug\листовые стратегии.exe

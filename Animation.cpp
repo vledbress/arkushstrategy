@@ -1,4 +1,10 @@
 #include "Animation.h"
+namespace mm {
+    float minimizeByPercent(float num, float percent) {
+        return num - ((percent / 100.f) * num);
+    }
+}
+
 
 ShiftAnimation::ShiftAnimation(std::shared_ptr<Tile> obj, sf::Vector2f targetPosition, float time)
     : _obj(obj), _targetPosition(targetPosition)
@@ -66,3 +72,59 @@ void AnimationManager::update()
     }
     //std::cout << _animations.size() << std::endl;
 }
+
+PulsatingAnimation::PulsatingAnimation(std::shared_ptr<Tile> obj, float percent, float time)
+{
+    _obj = obj;
+    _percent = percent;
+    _currentSteps = 0;
+    std::cout << std::endl;
+    obj->print();
+
+    auto currscale = obj->getSprite().getScale();
+    sf::Vector2f targetScale = { mm::minimizeByPercent(currscale.x, percent), mm::minimizeByPercent(currscale.y, percent) };
+    _deltaScale = (currscale - targetScale) / time / (float)Consts::fps;
+    _currentSteps = 0;
+    _totalSteps = time * (float)Consts::fps;
+    
+    sf::Vector2f startPos = obj->getScaledSize();
+    auto origSize = obj->getOrigSize();
+    sf::Vector2f targetPos = { origSize.x * targetScale.x, origSize.y * targetScale.y };
+   
+    _deltaOffset = (startPos - targetPos)/2.f/(float)_totalSteps;
+
+
+
+}
+
+
+void PulsatingAnimation::update()
+{
+    if (_currentSteps < _totalSteps) {
+        
+        sf::Vector2f currentScale = _obj->getSprite().getScale();
+        _obj->setScale(currentScale - _deltaScale);
+
+        _currentSteps++;
+        sf::Vector2f currentPosition = _obj->getPosition();
+        sf::Vector2f newPosition = currentPosition + _deltaOffset;
+        _obj->setPosition(newPosition);
+
+    }
+    else {
+        _isFinished = true;
+    }
+    //std::cout << "current step = " << _currentSteps << std::endl;
+}
+
+bool PulsatingAnimation::isFinished()
+{
+    return _isFinished;
+}
+
+
+
+
+
+
+ 

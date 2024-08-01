@@ -6,3 +6,5 @@ namespace Consts {
 	const int TILE_SIZE = 40;
 	const unsigned int fps = 60;
 }
+
+

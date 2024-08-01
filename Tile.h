@@ -11,13 +11,24 @@ private:
 	sf::Texture _texture;
 	
 
-	void reScale(float newW, float newH);
+	
 
 
 public:
 
+	void reScale(float newW, float newH);
+
+	void setScale(sf::Vector2f scale);
+
+	void oneMakesYouSmaller(float newW, float newH);
+
+
 	Tile(std::string path, int w, int h, float x, float y);
 	
+	sf::Vector2f getOrigSize();
+
+	sf::Vector2f getScaledSize();
+
 
 	void draw(sf::RenderWindow& window);
 

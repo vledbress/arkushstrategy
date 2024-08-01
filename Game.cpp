@@ -15,6 +15,7 @@ void Game::run()
 
     SimpleTileFactory stf;
     ShiftAnimationFactory saf;
+    PulsationAnimationFactory paf;
     Map mp;
     AnimationManager am;
 
@@ -41,6 +42,11 @@ void Game::run()
                     else {
                         am.addAnimation(saf.createAnimation(panel, { 1280, 10 }, 0.2));
                     }
+                }
+                else if (event.key.code == sf::Keyboard::Num5) {
+                    
+                    am.addAnimation(paf.createAnimation(panel, 25, 0.1));
+                    
                     
                 }
                 else if (event.key.code == sf::Keyboard::Escape) {
